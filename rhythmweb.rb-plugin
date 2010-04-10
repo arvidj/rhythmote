@@ -1,0 +1,9 @@
+[RB Plugin]
+Loader=python
+Module=rhythmote
+IAge=1
+Name=Rhythmote
+Description=A web interface for Rhythmbox
+Authors=Michael Gratton <mike@vee.net>,Edmond Kemokai <ekemokai@gmail.com>
+Copyright=Copyright © 2007 Michael Gratton
+Website=http://web.vee.net/projects/rhythmweb/
