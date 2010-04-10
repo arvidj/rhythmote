@@ -57,7 +57,8 @@ class RhythmwebPlugin(rb.Plugin):
         self.db = shell.props.db
         self.shell = shell
         self.player = shell.get_player()
-        self.shell_cb_            self.player.connect ('playing-song-changed',
+        self.shell_cb_ids = (
+            self.player.connect ('playing-song-changed',
                                  self._playing_entry_changed_cb),
             self.player.connect ('playing-changed',
                                  self._playing_changed_cb)
