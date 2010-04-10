@@ -104,7 +104,6 @@ ul#icons span.ui-icon {
 
 #volume-controls {
     float:right;
-    vertical-align: middle;
     margin: 2px;
 }
 
@@ -112,23 +111,8 @@ ul#icons span.ui-icon {
     float: left;
 }
 
-#playing-info-panel {
-    clear:both;
-    padding-top:5px;
-    padding-bottom:5px;
-}
-
-#playing-info-panel table {
-    width: 100%;
-}
-
-#current-track-artist {
-    width: 85%;
-}
-
 #current-play-time {
-    stylewidth: 10%;
-    text-align: right;
+    float: right;
 }
 
 #play-queue {
@@ -140,9 +124,17 @@ ul#icons span.ui-icon {
 }
 
 #volume_slider {
+    float: left;
     margin: 3px 0;
 }
 
 #volume-toggle-button {
     margin: 2px 0;
 }
+
+#play_position_slider {
+    margin: 4px 0;
+    float: left;
+    clear: both;
+}
+
