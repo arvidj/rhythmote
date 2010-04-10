@@ -43,11 +43,11 @@
 	
   </head>
   <body>	   
-	<div id="container" style="visibility:hidden;">
+	<div id="container">
 
 	  <div class="ui-state-default ui-corner-all" id="floating-control-panel">
 	    <div id="player-control-panel">
-		  <div style="width:49.5%;float:left">
+		  <div id="play-controls">
 		    <ul id="icons" class="ui-widget ui-helper-clearfix">
 		      
 			  <li>
@@ -67,7 +67,7 @@
 			  </li>
 		    </ul>
 		  </div>
-		  <div style="width:49.5%;float:left;text-align:right;">
+		  <div id="volume-controls">
 		    <table>
 			  <tr>
 				<td><span class="ui-icon ui-icon-volume-on"></span></td>
@@ -79,11 +79,11 @@
 		  </div>
 	    </div>
 
-		<div id="playing-info-panel" style="clear:both;padding-top:5px;padding-bottom:5px">
-		  <table style="width:100%">
+		<div id="playing-info-panel">
+		  <table>
 			<tr>
-			  <td style="width:85%"><span id="playing-info">&nbsp;</span></td>
-			  <td id="current-play-time" style="width:10%;text-align:right;"></td>
+			  <td id="current-track-artist"><span id="playing-info">&nbsp;</span></td>
+			  <td id="current-play-time"></td>
 			</tr>
 		  </table>
 		</div>
@@ -91,9 +91,9 @@
 		<div id="play_position_slider"></div><br/>
 	  </div>
 
-	  <div style="margin-top:105px;">
-	    <table id="play_queue_list" class="scroll" cellpadding="0" cellspacing="0"></table>
-	    <div id="play_queue_pager" class="scroll" style="text-align:center;"></div> 
+	  <div id="play-queue">
+	    <table id="play_queue_list" class="scroll"></table>
+	    <div id="play_queue_pager" class="scroll"></div> 
 	  </div>
 	</div>
   </body>

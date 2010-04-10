@@ -19,9 +19,16 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 */
 
+/**
+ * Hide container at startup
+ */
+
+#container {
+    visibility: hidden;
+}
+
 html, body {
     color: WindowText;
-    /*background: Window;*/
     font: caption;
 }
 
@@ -84,4 +91,42 @@ ul#icons span.ui-icon {
     bottom:auto;
     z-index:100;
     clear:both
+}
+
+#play-controls {
+    width:49.5%;
+    float:left;
+}
+
+#volume-controls {
+    width:49.5%;
+    float:left;
+    text-align:right;
+}
+
+#playing-info-panel {
+    clear:both;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+#playing-info-panel table {
+    width: 100%;
+}
+
+#current-track-artist {
+    width: 85%;
+}
+
+#current-play-time {
+    stylewidth: 10%;
+    text-align: right;
+}
+
+#play-queue {
+    margin-top: 105px;
+}
+
+#play_queue_pager {
+    text-align: center;
 }
