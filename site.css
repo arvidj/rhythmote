@@ -1,40 +1,87 @@
 /*
 
- Rhythmweb - a web site for your Rhythmbox.
- Copyright (C) 2007 Michael Gratton.
+Rhythmweb - a web site for your Rhythmbox.
+Copyright (C) 2007 Michael Gratton.
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program; if not, write to the Free Software Foundation, Inc.,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
 
 html, body {
-  color: WindowText;
-  /*background: Window;*/
-  font: caption;
+    color: WindowText;
+    /*background: Window;*/
+    font: caption;
 }
+
 #title {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
+
 cite {
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
 }
-#dur-sec-count {visibility:hidden}
-#elp-sec-count {visibility:hidden}
 
-a {color:WindowText;text-decoration:none}
-#play_queue_list a{text-decoration:none}
+#dur-sec-count {
+    visibility:hidden
+}
 
+#elp-sec-count {
+    visibility:hidden
+}
+
+a {
+    color:WindowText;
+    text-decoration:none
+}
+
+#play_queue_list a{
+    text-decoration:none
+}
+
+ul#icons {
+    margin: 0;
+    padding: 0;
+}
+
+ul#icons li {
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+}
+
+ul#icons span.ui-icon {
+    float: left;
+    margin: 0 4px;
+}
+
+#container {
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:5px
+}
+
+#floating-control-panel {
+    position:fixed;
+    left:auto;
+    top:5px;
+    bottom:auto;
+    z-index:100;
+    clear:both
+}

@@ -3,28 +3,28 @@
 
 <!--
 
- Rhythmweb - a web site for your Rhythmbox.
- Copyright (C) 2007 Michael Gratton.
+   Rhythmweb - a web site for your Rhythmbox.
+   Copyright (C) 2007 Michael Gratton.
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License along
- with this program; if not, write to the Free Software Foundation, Inc.,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+   You should have received a copy of the GNU General Public License along
+   with this program; if not, write to the Free Software Foundation, Inc.,
+   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
--->
+  -->
 
 <html>
-<head>
-<title>Rhythmote</title>
+  <head>
+    <title>Rhythmote</title>
 	<meta name="description" content="Rhythmbox web-based remote control">	
 	<LINK REL="SHORTCUT ICON" HREF="favicon.ico">
 	<link rel="stylesheet" type="text/css" media="screen" href="site.css" />
@@ -33,19 +33,19 @@
 	<script type="text/javascript" src="jquery/jquery-ui-1.7.1.custom/js/jquery-ui-1.7.1.custom.min.js"></script>
 
 	<!--
-	<link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5.alfa/themes/lightness/ui.all.css" />
-	-->
+	   <link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5.alfa/themes/lightness/ui.all.css" />
+	   -->
 
 	<!--
-	<link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5.alfa/themes/ui.jqgrid.css" />
-	<script src="jquery/jqGrid-3.5.alfa/js/jquery.jqGrid.js" type="text/javascript"></script>
-	<script src="jquery/jqGrid-3.5.alfa/js/jquery.tablednd.js" type="text/javascript"></script>
-	-->
+	   <link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5.alfa/themes/ui.jqgrid.css" />
+	   <script src="jquery/jqGrid-3.5.alfa/js/jquery.jqGrid.js" type="text/javascript"></script>
+	   <script src="jquery/jqGrid-3.5.alfa/js/jquery.tablednd.js" type="text/javascript"></script>
+	   -->
 
 	<!--
-	<link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5-beta/css/ui.jqgrid.css" />
-	<script src="jquery/jqGrid-3.5-beta/jquery.jqGrid.js" type="text/javascript"></script>
-	-->
+	   <link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5-beta/css/ui.jqgrid.css" />
+	   <script src="jquery/jqGrid-3.5-beta/jquery.jqGrid.js" type="text/javascript"></script>
+	   -->
 
 
 	<link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.5.2/css/ui.jqgrid.css" />
@@ -55,76 +55,76 @@
 
 
 	<!--
-	<link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.4.2/themes/coffee/grid.css" /> 
-	<script type="text/javascript" src="jquery/jqGrid-3.4.2/js/jqDnR.js"></script>
-	<script type="text/javascript" src="jquery/jqGrid-3.4.2/jquery.jqGrid.js"></script>
-	-->
+	   <link rel="stylesheet" type="text/css" media="screen" href="jquery/jqGrid-3.4.2/themes/coffee/grid.css" /> 
+	   <script type="text/javascript" src="jquery/jqGrid-3.4.2/js/jqDnR.js"></script>
+	   <script type="text/javascript" src="jquery/jqGrid-3.4.2/jquery.jqGrid.js"></script>
+	   -->
 	
 	
 	<!--
-	<script src="jquery/cluetip-0.9.8/jquery.hoverIntent.js" type="text/javascript"></script>
-	<script src="jquery/cluetip-0.9.8/jquery.cluetip.js" type="text/javascript"></script>	
-	<link rel="stylesheet" href="jquery/cluetip-0.9.8/jquery.cluetip.css" type="text/css" />
-	-->
+	   <script src="jquery/cluetip-0.9.8/jquery.hoverIntent.js" type="text/javascript"></script>
+	   <script src="jquery/cluetip-0.9.8/jquery.cluetip.js" type="text/javascript"></script>	
+	   <link rel="stylesheet" href="jquery/cluetip-0.9.8/jquery.cluetip.css" type="text/css" />
+	   -->
 
 	<script src="jquery/blockui/jquery.blockUI.js" type="text/javascript"></script>
     <script src="rhythmote.js" type="text/javascript"></script>	
 	<link href="rhythmote.css" rel="stylesheet" type="text/css">
-<META http-equiv="Pragma" content="no-cache">
-</head>
-	<body>	   
-	   <div id="container" style="visibility:hidden;">
+    <META http-equiv="Pragma" content="no-cache">
+  </head>
+  <body>	   
+	<div id="container" style="visibility:hidden;">
 
-	     <div class="ui-state-default ui-corner-all" id="floating-control-panel">
-	      <div id="player-control-panel">
-		<div style="width:49.5%;float:left">
-		<ul id="icons" class="ui-widget ui-helper-clearfix">
-		
-			<li>
+	  <div class="ui-state-default ui-corner-all" id="floating-control-panel">
+	    <div id="player-control-panel">
+		  <div style="width:49.5%;float:left">
+		    <ul id="icons" class="ui-widget ui-helper-clearfix">
+		      
+			  <li>
 				<button onclick="toggle_play()" id="playbtn" class="ui-state-default ui-corner-all" title="Play">
-				 <span class="ui-icon ui-icon-play"></span>
+				  <span class="ui-icon ui-icon-play"></span>
 				</button>
-			</li>
-			<li>
+			  </li>
+			  <li>
 				<button onclick="play_prev()" class="ui-state-default ui-corner-all" title="Previous">
-				 <span class="ui-icon ui-icon-seek-prev"></span>
+				  <span class="ui-icon ui-icon-seek-prev"></span>
 				</button>
-			</li>
-			<li>
+			  </li>
+			  <li>
 				<button onclick="play_next()" class="ui-state-default ui-corner-all" title="Next">
-				 <span class="ui-icon ui-icon-seek-next"></span>
+				  <span class="ui-icon ui-icon-seek-next"></span>
 				</button>
-			</li>
-		</ul>
-		</div>
-		<div style="width:49.5%;float:left;text-align:right;">
-		   <table>
-			<tr>
+			  </li>
+		    </ul>
+		  </div>
+		  <div style="width:49.5%;float:left;text-align:right;">
+		    <table>
+			  <tr>
 				<td><span class="ui-icon ui-icon-volume-on"></span></td>
 				<td><button id="volumedown" onclick="volume_down()" class=" ui-state-default ui-corner-all"><span class="ui-icon ui-icon-minus"></span></button></td>
 				<td><div id="volume_slider"></div></td>
 				<td><button id="volumeup" onclick="volume_up()" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plus"></span></button></td>
-			</tr>
-		   </table>
-		</div>
-	      </div>
+			  </tr>
+		    </table>
+		  </div>
+	    </div>
 
 		<div id="playing-info-panel" style="clear:both;padding-top:5px;padding-bottom:5px">
-		    <table style="width:100%">
+		  <table style="width:100%">
 			<tr>
-				<td style="width:85%"><span id="playing-info">&nbsp;</span></td>
-				<td id="current-play-time" style="width:10%;text-align:right;"></td>
+			  <td style="width:85%"><span id="playing-info">&nbsp;</span></td>
+			  <td id="current-play-time" style="width:10%;text-align:right;"></td>
 			</tr>
-		    </table>
+		  </table>
 		</div>
 
 		<div id="play_position_slider"></div><br/>
-	     </div>
+	  </div>
 
-	     <div style="margin-top:105px;">
-	       <table id="play_queue_list" class="scroll" cellpadding="0" cellspacing="0"></table>
-	       <div id="play_queue_pager" class="scroll" style="text-align:center;"></div> 
-	     </div>
-	   </div>
-	</body>
+	  <div style="margin-top:105px;">
+	    <table id="play_queue_list" class="scroll" cellpadding="0" cellspacing="0"></table>
+	    <div id="play_queue_pager" class="scroll" style="text-align:center;"></div> 
+	  </div>
+	</div>
+  </body>
 </html>
