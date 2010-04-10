@@ -74,10 +74,17 @@ $(function(){
 		  gridComplete:function(){/*$.unblockUI();$('#container').css("visibility","visible");*/}
 		});
 
-	//$('#volumeup').click(volume_up);
-	//$('#volumedown').click(volume_down);
+	bind_handlers();
 	get_playing();
 });
+
+function bind_handlers() {
+    $('#volumeup').click(volume_up);
+	$('#volumedown').click(volume_down);
+    $('#playbtn').click(toggle_play);
+    $('#prevbtn').click(play_prev);
+    $('#nextbtn').click(play_next);
+}
 
 function make_volctrl(){
     $.post('/',{action:'get-vol'},function(data){

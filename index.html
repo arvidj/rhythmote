@@ -51,17 +51,17 @@
 		    <ul id="icons" class="ui-widget ui-helper-clearfix">
 		      
 			  <li>
-				<button onclick="toggle_play()" id="playbtn" class="ui-state-default ui-corner-all" title="Play">
+				<button id="playbtn" class="ui-state-default ui-corner-all" title="Play">
 				  <span class="ui-icon ui-icon-play"></span>
 				</button>
 			  </li>
 			  <li>
-				<button onclick="play_prev()" class="ui-state-default ui-corner-all" title="Previous">
+				<button id="prevbtn" class="ui-state-default ui-corner-all" title="Previous">
 				  <span class="ui-icon ui-icon-seek-prev"></span>
 				</button>
 			  </li>
 			  <li>
-				<button onclick="play_next()" class="ui-state-default ui-corner-all" title="Next">
+				<button id="nextbtn" class="ui-state-default ui-corner-all" title="Next">
 				  <span class="ui-icon ui-icon-seek-next"></span>
 				</button>
 			  </li>
@@ -71,9 +71,9 @@
 		    <table>
 			  <tr>
 				<td><span class="ui-icon ui-icon-volume-on"></span></td>
-				<td><button id="volumedown" onclick="volume_down()" class=" ui-state-default ui-corner-all"><span class="ui-icon ui-icon-minus"></span></button></td>
+				<td><button id="volumedown" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-minus"></span></button></td>
 				<td><div id="volume_slider"></div></td>
-				<td><button id="volumeup" onclick="volume_up()" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plus"></span></button></td>
+				<td><button id="volumeup" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-plus"></span></button></td>
 			  </tr>
 		    </table>
 		  </div>
