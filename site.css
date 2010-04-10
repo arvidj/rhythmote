@@ -65,9 +65,9 @@ ul#icons {
 }
 
 ul#icons li {
-    margin: 2px;
     position: relative;
-    padding: 4px 0;
+    margin: 2px;
+    /* padding: 4px 0; */
     cursor: pointer;
     float: left;
     list-style: none;
@@ -93,15 +93,23 @@ ul#icons span.ui-icon {
     clear:both
 }
 
+#player-control-panel {
+    float: right;
+    padding: 4px 0;
+}
+
 #play-controls {
-    width:49.5%;
     float:left;
 }
 
 #volume-controls {
-    width:49.5%;
-    float:left;
-    text-align:right;
+    float:right;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+#volume-controls > * {
+    float: left;
 }
 
 #playing-info-panel {
@@ -129,4 +137,12 @@ ul#icons span.ui-icon {
 
 #play_queue_pager {
     text-align: center;
+}
+
+#volume_slider {
+    margin: 3px 0;
+}
+
+#volume-toggle-button {
+    margin: 2px 0;
 }
