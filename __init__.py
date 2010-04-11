@@ -252,7 +252,7 @@ class RhythmwebServer(object):
                         
                   return return_redirect('/', environ, response)
 
-          # display the page
+            # display the page
             player_html = open(resolve_path('index.html'))
             response_headers = [('Content-type','text/html; charset=UTF-8')]
             response('200 OK', response_headers)
