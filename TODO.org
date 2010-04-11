@@ -1,0 +1,3 @@
+* DONE Clicking a track title in the queue scrolls the browser to the top of the page (due to the anchor). This is undesirable.
+* TODO Smoother position slider movement
+* TODO Search on album and track
