@@ -260,7 +260,7 @@ class RhythmwebServer(object):
 
       def _make_playlist_xml(self,response):
             db = self.plugin.db
-            libquery = (rhythmdb.QUERY_PROP_EQUALS, rhythmdb.PROP_TYPE,db.entry_type_get_by_name('song'))
+            libquery = (rhythmdb.QUERY_PROP_EQUALS, rhythmdb.PROP_TYPE, db.entry_type_get_by_name('song'))
             
             response_headers = [('Content-type','text/xml; charset=UTF-8')]
             response('200 OK', response_headers)
@@ -325,7 +325,12 @@ class RhythmwebServer(object):
       def _player_search_term(self, params, response):
             #"""Search library for term""""
             term = params['term'][0]
-            libquery = (rhythmdb.QUERY_PROP_LIKE, rhythmdb.PROP_ARTIST_FOLDED, term)
+            libquery = (rhythmdb.QUERY_PROP_LIKE, rhythmdb.PROP_ARTIST_FOLDED, term,
+                        rhythmdb.QUERY_DISJUNCTION,
+                        rhythmdb.QUERY_PROP_LIKE, rhythmdb.PROP_ALBUM_FOLDED, term,
+                        rhythmdb.QUERY_DISJUNCTION,
+                        rhythmdb.QUERY_PROP_LIKE, rhythmdb.PROP_TITLE_FOLDED, term
+                        )
             
             response_headers = [('Content-type','text/xml; charset=UTF-8')]
             response('200 OK', response_headers)
