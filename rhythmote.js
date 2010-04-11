@@ -79,7 +79,7 @@ $(function(){
 	        postData:{action:'get-xml-pl'},
 	        width:docWidth*.95,
             pager: $('#play_queue_pager'),
-	        ondblClickRow:playtrack,
+	        ondblClickRow:playtrack
         }
     ));
 
@@ -173,8 +173,6 @@ function volume_down(){
 }
 
 function playtrack(rowid){
-    console.log('playtrack');
-
 	row = $('#play_queue_list').getRowData(rowid);
     $.post('/',{action:'play-entry',location:row.trackid},function(data){
 	    if(pltmOut != 0)
