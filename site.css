@@ -85,16 +85,14 @@ ul#icons span.ui-icon {
 }
 
 #floating-control-panel {
-    position:fixed;
     left:auto;
     top:5px;
     bottom:auto;
     z-index:100;
-    clear:both
 }
 
 #player-control-panel {
-    float: right;
+    float: left;
     padding: 4px 0;
 }
 
@@ -116,7 +114,7 @@ ul#icons span.ui-icon {
 }
 
 #play-queue {
-    margin-top: 105px;
+    margin-top: 10px;
 }
 
 #play_queue_pager {
@@ -134,7 +132,4 @@ ul#icons span.ui-icon {
 
 #play_position_slider {
     margin: 4px 0;
-    float: left;
-    clear: both;
 }
-
