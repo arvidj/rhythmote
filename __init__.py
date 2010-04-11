@@ -1,4 +1,4 @@
-<#
+#
 # Rhythmweb - a web site for your Rhythmbox.
 # Copyright (C) 2007 Michael Gratton.
 #
@@ -137,17 +137,17 @@ class RhythmwebPlugin(rb.Plugin):
                 stream_title = \
                     self.db.entry_request_extra_metadata(entry,
                                                          'rb:stream-song-title')
-          if stream_title:
-                stream = title
-                title = stream_title
-                if not artist:
-                      artist = self.db.\
-                          entry_request_extra_metadata(entry,
-                                                       'rb:stream-song-artist')
-                if not album:
-                      album = self.db.\
-                          entry_request_extra_metadata(entry,
-                                                       'rb:stream-song-album')
+                if stream_title:
+                      stream = title
+                      title = stream_title
+                      if not artist:
+                            artist = self.db.\
+                                entry_request_extra_metadata(entry,
+                                                             'rb:stream-song-artist')
+                      if not album:
+                            album = self.db.\
+                                entry_request_extra_metadata(entry,
+                                                             'rb:stream-song-album')
                 self.server.set_playing(artist, album, title, stream,duration,eid)
           else:
                 self.server.set_playing(None, None, None, None,None,None)
@@ -414,7 +414,7 @@ class RhythmwebServer(object):
                                          (playing, self.stream))
                         else:
                               playing = self.stream
-                  playing = '<a href="#playingtrack_%s">%s</a> <span id="dur-sec-count">%s</span><span id="elp-sec-count">%s</span>' % self.eid,playing,tm_dur,player.get_playing_time()
+                  playing = '<a href="#playingtrack_%s">%s</a> <span id="dur-sec-count">%s</span><span id="elp-sec-count">%s</span>' % (self.eid,playing,tm_dur,player.get_playing_time())
                 
             response_headers = [('Content-type','text/html; charset=UTF-8')]
             response('200 OK', response_headers)
