@@ -1,3 +1,20 @@
 * DONE Clicking a track title in the queue scrolls the browser to the top of the page (due to the anchor). This is undesirable.
 * TODO Smoother position slider movement
 * TODO Search on album and track
+* TODO Move all JS into object.
+** Perhaps one object for interacting with grid,
+** another for controls,
+** another for communicating with server/rhythmbox
+* TODO Autoload more result when scrolling to the end of the page
+* TODO Result size is way off. 
+
+calling this, not working.
+> guint64
+> rhythmdb_query_model_get_size (RhythmDBQueryModel *model)
+> {
+>         return model->priv->total_size;
+> }
+
+* TODO Add controllable play queue, queing tracks
+* TODO Not generate XML by hand
+* TODO Not return html from server, return json and transform in client

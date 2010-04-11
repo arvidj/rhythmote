@@ -55,7 +55,7 @@ $(function(){
             color: '#fff' 
         }
 	}); 
-	//volume Slider
+	//Volume slider
 	make_volctrl();
 	make_play_pos_ctrl();
 	
@@ -194,11 +194,13 @@ function play_prev(){
 
 function toggle_play(){
     $.post('/',{action:'play',location:1},function(data){
+        // TODO: unneccessary eval? cant jquery handle this?
 		var obj = eval('('+data+')');
 		if(obj.pause){
 		    $('#playbtn span').removeClass('ui-icon-play');
 		    $('#playbtn span').addClass('ui-icon-pause');
 
+            // TODO: duplication
 	     	if(pltmUpdt != 0)
 	  		    clearInterval(pltmUpdt);
 	     	if(pltmOut != 0)
