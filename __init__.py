@@ -246,7 +246,10 @@ class RhythmwebServer(object):
 		elif action == 'get-playing':
 		    return self._getplaying(params,response)
 		elif action == 'set-play-time':
-		    return self._setplaypos(params,response)
+                      return self._setplaypos(params,response)
+                elif action == 'search':
+                      return self._player_search_term(params, response)
+                      
             return return_redirect('/', environ, response)
 
         # display the page
@@ -255,34 +258,32 @@ class RhythmwebServer(object):
         response('200 OK', response_headers)
         return player_html.read() 
 
-
-
     def _make_playlist_xml(self,response):
-	db = self.plugin.db
+          db = self.plugin.db
+          libquery = (rhythmdb.QUERY_PROP_EQUALS, rhythmdb.PROP_TYPE,db.entry_type_get_by_name('song'))
+          
+          response_headers = [('Content-type','text/xml; charset=UTF-8')]
+          response('200 OK', response_headers)
+          return self._query_to_xml(libquery)
 
-	#artist = '2pac'
-	#qresult = (rhythmdb.QUERY_PROP_EQUALS, rhythmdb.PROP_ARTIST_FOLDED,artist.encode('utf-8'))
-
-	libquery = (rhythmdb.QUERY_PROP_EQUALS, rhythmdb.PROP_TYPE,db.entry_type_get_by_name('song'))
-
-	playlist_rows = self._player_search(libquery)
-        playlist = '<rows></rows>'
-	rindex = 0;
-        if playlist_rows.get_size() > 0:
-            playlist = cStringIO.StringIO()
-	    plsize = playlist_rows.get_size()
-	    playlist.write('<?xml version="1.0" encoding="utf-8" ?>');
-	    playlist.write('<rows>')
-	    playlist.write('  <page>1</page>')
-	    playlist.write('  <total>1</total>')
-	    playlist.write('  <records>%s</records>' % plsize )
-            for row in playlist_rows:
+    def _query_to_xml(self, query):
+          db = self.plugin.db
+          playlist_rows = self._player_search(query)
+          playlist = cStringIO.StringIO()
+          plsize = playlist_rows.get_size()
+          playlist.write('<?xml version="1.0" encoding="utf-8" ?>');
+          playlist.write('<rows>')
+          playlist.write('  <page>1</page>')
+          playlist.write('  <total>1</total>')
+          playlist.write('  <records>%s</records>' % plsize )
+          rindex = 0;
+          for row in playlist_rows:
                 entry = row[0]
-		rindex = rindex +1
-		playlist.write('<row>')
+                rindex = rindex + 1
+                playlist.write('<row>')
                 #playlist.write('  <cell>%s</cell>' % rindex )
-		playlist.write('  <cell>%s</cell>' % db.entry_get(entry, rhythmdb.PROP_TRACK_NUMBER) )
-		playlist.write('  <cell><![CDATA[<a href="#" name="playingtrack_%s">' % db.entry_get(entry, rhythmdb.PROP_ENTRY_ID))		
+                playlist.write('  <cell>%s</cell>' % db.entry_get(entry, rhythmdb.PROP_TRACK_NUMBER) )
+                playlist.write('  <cell><![CDATA[<a href="#" name="playingtrack_%s">' % db.entry_get(entry, rhythmdb.PROP_ENTRY_ID))		
                 playlist.write(db.entry_get(entry, rhythmdb.PROP_TITLE))
                 playlist.write('</a>]]></cell><cell><![CDATA[')
                 playlist.write(db.entry_get(entry, rhythmdb.PROP_ARTIST))
@@ -290,27 +291,26 @@ class RhythmwebServer(object):
                 playlist.write(db.entry_get(entry, rhythmdb.PROP_ALBUM))
                 playlist.write('  ]]></cell><cell><![CDATA[')
 
-		tm_dur = db.entry_get(entry, rhythmdb.PROP_DURATION)
-		tm_min = int(math.ceil(tm_dur/60))
-		tm_sec = tm_dur%60
-		
-		if tm_sec<10:
-		  tm_sec = '0%s' %tm_sec
+                tm_dur = db.entry_get(entry, rhythmdb.PROP_DURATION)
+                tm_min = int(math.ceil(tm_dur/60))
+                tm_sec = tm_dur%60
 
-		playlist.write('%s:%s' % (tm_min,tm_sec) )
-		playlist.write('  ]]></cell><cell><![CDATA[')
+                if tm_sec<10:
+                      tm_sec = '0%s' %tm_sec
+
+                playlist.write('%s:%s' % (tm_min,tm_sec) )
+                playlist.write('  ]]></cell><cell><![CDATA[')
                 playlist.write(db.entry_get(entry, rhythmdb.PROP_GENRE))
                 playlist.write('  ]]></cell><cell><![CDATA[')
-		playlist.write('%s' % db.entry_get(entry, rhythmdb.PROP_ENTRY_ID))
-		playlist.write('  ]]></cell>')
-		playlist.write('</row>')
-            playlist.write('</rows>')
-	    playlist = playlist.getvalue()
+                playlist.write('%s' % db.entry_get(entry, rhythmdb.PROP_ENTRY_ID))
+                playlist.write('  ]]></cell>')
+                playlist.write('</row>')
+                if rindex > 200:
+                      break
 
-        response_headers = [('Content-type','text/xml; charset=UTF-8')]
-        response('200 OK', response_headers)
-        return playlist
-
+          playlist.write('</rows>')
+          return playlist.getvalue()
+            
     def _player_search(self, search):
         #"""perform a player search"""
 
@@ -319,11 +319,18 @@ class RhythmwebServer(object):
         db.query_append(query, search)
         query_model = db.query_model_new_empty()
         db.do_full_query_parsed(query_model, query)
-        #result = []
-        #for row in query_model:
-        #    result.append(Song(row[0], self.rdb))
-        #return result
+        
 	return query_model;
+
+    def _player_search_term(self, params, response):
+          #"""Search library for term""""
+          term = params['term'][0]
+          libquery = (rhythmdb.QUERY_PROP_LIKE, rhythmdb.PROP_ARTIST_FOLDED, term)
+          
+          response_headers = [('Content-type','text/xml; charset=UTF-8')]
+          response('200 OK', response_headers)
+          
+          return self._query_to_xml(libquery)
 
     def _setvolume(self, params, response):
 	player = self.plugin.player

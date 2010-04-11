@@ -6,6 +6,38 @@ var pltmUpdt = 0;
 var curTrackTime = '';
 var curVolume = 0;
 var docWidth = 0;
+
+var jqGridOptions = { 
+    url:'/get-xml-pl/', 
+	datatype: "xml", 
+	colNames:['Track#', 'Title', 'Artist','Album','Time','Genre','Track id'], 
+	colModel:[ {name:'id',index:'id', width:30, sortable:false}, 
+			   {name:'title',index:'title', width:150}, 
+			   {name:'artist',index:'artist', width:80, align:"left"}, 
+			   {name:'album',index:'album', width:100, align:"left"}, 
+			   {name:'time',index:'time', width:30,align:"center"}, 
+			   {name:'genre',index:'genre', width:55},
+			   {name:'trackid',index:'trackid',hidden:true} ], 
+	rowNum:-1,
+	postData:{action:'get-xml-pl'},
+	pginput:false,
+	pgtext:'',
+	loadonce:true,
+	rownumbers:true,
+	gridview:true,
+	recordpos:'center',
+    pgbuttons:false,
+	recordtext:'{1} out of {2} total tracks',
+	rowList:[], 
+	imgpath: 'jquery/jqGrid-3.4.2/themes/coffee/images',
+	sortname: 'id', 
+	viewrecords: true, 
+	sortorder: "desc",
+	width:docWidth*.95,
+	height:'auto',
+	caption:"Music library"
+};
+
 $(function(){
 
 	docWidth = $(document).width();
@@ -40,39 +72,16 @@ $(function(){
 	$('#volume_slider').width(docWidth*.2);
 	$('#playing-info-panel').width(docWidth*.95);	
 	$('#play_position_slider').width(docWidth*.95);		
-	$("#play_queue_list").jqGrid(
-        { url:'/get-xml-pl/', 
-		  datatype: "xml", 
-		  colNames:['Track#', 'Title', 'Artist','Album','Time','Genre','Track id'], 
-		  colModel:[ {name:'id',index:'id', width:30, sortable:false}, 
-					 {name:'title',index:'title', width:150}, 
-					 {name:'artist',index:'artist', width:80, align:"left"}, 
-					 {name:'album',index:'album', width:100, align:"left"}, 
-					 {name:'time',index:'time', width:30,align:"center"}, 
-					 {name:'genre',index:'genre', width:55},
-					 {name:'trackid',index:'trackid',hidden:true} ], 
-		  rowNum:-1,
-		  postData:{action:'get-xml-pl'},
-		  pginput:false,
-		  pgtext:'',
-		  loadonce:true,
-		  rownumbers:true,
-		  gridview:true,
-		  recordpos:'center',
-          pgbuttons:false,
-		  recordtext:'{1} Total Tracks',
-		  rowList:[], 
-		  imgpath: 'jquery/jqGrid-3.4.2/themes/coffee/images', 
-		  pager: $('#play_queue_pager'), 
-		  sortname: 'id', 
-		  viewrecords: true, 
-		  sortorder: "desc",
-		  ondblClickRow:playtrack,
-		  width:docWidth*.95,
-		  height:'auto',
-		  caption:"Music library",
-		  gridComplete:function(){/*$.unblockUI();$('#container').css("visibility","visible");*/}
-		});
+	$('#play_queue_list').jqGrid($.extend(
+        jqGridOptions,
+        { 
+            url:'/get-xml-pl/', 
+	        postData:{action:'get-xml-pl'},
+	        width:docWidth*.95,
+            pager: $('#play_queue_pager'),
+	        ondblClickRow:playtrack,
+        }
+    ));
 
 	bind_handlers();
 	get_playing();
@@ -84,7 +93,22 @@ function bind_handlers() {
     $('#playbtn').click(toggle_play);
     $('#prevbtn').click(play_prev);
     $('#nextbtn').click(play_next);
+    $('#search-form').submit(search);
 }
+
+function search(e) {
+    e.stopPropagation();
+
+    var docWidth = $(document).width();
+    $.post('/',{action:'search', term: $('#search').val()},function(data){
+        console.log('recieved data');
+        console.log(data);
+        $('#play_queue_list')[0].addXmlData(data);
+    });
+
+    return false;
+}
+
 
 function make_volctrl(){
     $.post('/',{action:'get-vol'},function(data){
@@ -149,6 +173,8 @@ function volume_down(){
 }
 
 function playtrack(rowid){
+    console.log('playtrack');
+
 	row = $('#play_queue_list').getRowData(rowid);
     $.post('/',{action:'play-entry',location:row.trackid},function(data){
 	    if(pltmOut != 0)
