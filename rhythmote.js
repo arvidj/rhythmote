@@ -146,9 +146,6 @@ function make_play_pos_ctrl(){
 		});
 }
 
-
-
-
 function setvolume(volume){
     $.post('/',{action:'set-vol',vol:volume},function(data){
 		

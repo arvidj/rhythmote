@@ -312,7 +312,7 @@ class RhythmwebServer(object):
             return playlist.getvalue()
             
       def _player_search(self, search):
-            #"""perform a player search"""
+            #"""Perform a player search"""
             
             db = self.plugin.db
             query = db.query_new()
